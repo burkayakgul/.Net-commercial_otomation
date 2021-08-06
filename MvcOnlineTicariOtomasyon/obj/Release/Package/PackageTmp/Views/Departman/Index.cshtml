@@ -1,0 +1,55 @@
+﻿@using MvcOnlineTicariOtomasyon.Models.Siniflar
+@model List<Departman>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="row">
+            <div class="col-12">
+                <div class="card card-margin">
+                    <div class="card-body">
+                        <div class="page-header">
+                            <h3 class="page-title">
+                                <span class="page-title-icon bg-gradient-primary text-white mr-2">
+                                    <i class="mdi mdi-city"></i>
+                                </span> Departmanlar
+                            </h3>
+                            <nav aria-label="breadcrumb">
+                                <ul class="breadcrumb">
+                                    <li class="breadcrumb-item active" aria-current="page">
+                                        <span></span>Overview <i class="mdi mdi-alert-circle-outline icon-sm text-primary align-middle"></i>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <div class="form-sample">
+                            <table class="table table-striped">
+                                <tr>
+                                    <th width="70px;">Id</th>
+                                    <th>Departman Ad</th>
+                                    <th width="70px;">Sil</th>
+                                    <th width="70px;">Güncelle</th>
+                                    <th width="70px;">Detaylar</th>
+                                </tr>
+                                @foreach (var d in Model)
+                                {
+                                    <tr>
+                                        <td>@d.DepartmanId</td>
+                                        <td>@d.DepartmanAd</td>
+                                        <td><a href="/Departman/DepartmanSil/@d.DepartmanId" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a></td>
+                                        <td><a href="/Departman/DepartmanGuncelle/@d.DepartmanId" class="btn btn-warning"><i class="fas fa-pen"></i></a></td>
+                                        <td><a href="/Departman/DepartmanDetay/@d.DepartmanId" class="btn btn-info"><i class="fas fa-info-circle"></i></a></td>
+                                    </tr>
+                                }
+                            </table>
+                            <br />
+                            <a href="/Departman/DepartmanEkle/" class="btn btn-success"><i class="fas fa-plus-circle"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,52 @@
+﻿@model MvcOnlineTicariOtomasyon.Models.Siniflar.Cariler
+@{
+    ViewBag.Title = "CariGuncelle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="row">
+            <div class="col-12">
+                <div class="card card-margin">
+                    <div class="card-body">
+                        <div class="page-header">
+                            <h3 class="page-title">
+                                <span class="page-title-icon bg-gradient-primary text-white mr-2">
+                                    <i class="mdi mdi-account-star"></i>
+                                </span> @ViewBag.cariad
+                            </h3>
+                            <nav aria-label="breadcrumb">
+                                <ul class="breadcrumb">
+                                    <li class="breadcrumb-item active" aria-current="page">
+                                        <span></span>Overview <i class="mdi mdi-alert-circle-outline icon-sm text-primary align-middle"></i>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <div class="form-sample">
+                            @using (Html.BeginForm("CariGuncelle", "Cari", FormMethod.Post, new { @class = "form-group" }))
+                            {
+                                @Html.HiddenFor(x => x.CariId)
+                                @Html.LabelFor(x => x.CariAd)
+                                @Html.TextBoxFor(x => x.CariAd, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(x => x.CariAd, "", new { @style = "color:red;" })
+                                <br />
+                                @Html.LabelFor(x => x.CariSoyad)
+                                @Html.TextBoxFor(x => x.CariSoyad, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(x => x.CariSoyad, "", new { @style = "color:red;" })
+                                <br />
+                                @Html.LabelFor(x => x.CariSehir)
+                                @Html.TextBoxFor(x => x.CariSehir, new { @class = "form-control" })
+                                <br />
+                                @Html.LabelFor(x => x.CariMail)
+                                @Html.TextBoxFor(x => x.CariMail, new { @class = "form-control" })
+                                <br />
+                                <button class="btn btn-warning">Güncelle</button>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

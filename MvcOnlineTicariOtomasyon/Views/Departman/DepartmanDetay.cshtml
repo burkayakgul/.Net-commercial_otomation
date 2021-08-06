@@ -1,0 +1,54 @@
+﻿@using MvcOnlineTicariOtomasyon.Models.Siniflar
+@model List<Personel>
+@{
+    ViewBag.Title = "DepartmanDetay";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="row">
+            <div class="col-12">
+                <div class="card card-margin">
+                    <div class="card-body">
+                        <div class="page-header">
+                            <h3 class="page-title">
+                                <span class="page-title-icon bg-gradient-primary text-white mr-2">
+                                    <i class="mdi mdi-city"></i>
+                                </span> @ViewBag.DepertmanAd Personelleri
+                            </h3>
+                            <nav aria-label="breadcrumb">
+                                <ul class="breadcrumb">
+                                    <li class="breadcrumb-item active" aria-current="page">
+                                        <span></span>Overview <i class="mdi mdi-alert-circle-outline icon-sm text-primary align-middle"></i>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <div class="form-sample">
+                            <table class="table table-striped">
+                                <tr>
+                                    <th>Personel Id</th>
+                                    <th>Personel Ad</th>
+                                    <th>Personel Soyad</th>
+                                    <th>Personel Görsel</th>
+                                    <th>Satışlar</th>
+                                </tr>
+                                @foreach (var x in Model)
+                                {
+                                    <tr>
+                                        <td>@x.PersonelId</td>
+                                        <td>@x.PersonelAd</td>
+                                        <td>@x.PersonelSoyad</td>
+                                        <td>@x.PersonelGorsel</td>
+                                        <td><a href="/Departman/DepartmanPersonelSatis/@x.PersonelId" class="btn btn-info">Satışlar</a></td>
+                                    </tr>
+                                }
+                            </table>
+                            <a href="/Personel/PersonelEkle" class="btn btn-success">Yeni Personel</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

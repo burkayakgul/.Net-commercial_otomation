@@ -1,0 +1,66 @@
+﻿@model MvcOnlineTicariOtomasyon.Models.Siniflar.Urun
+@{
+    ViewBag.Title = "UrunGetir";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="row">
+            <div class="col-12">
+                <div class="card card-margin">
+                    <div class="card-body">
+                        <div class="page-header">
+                            <h3 class="page-title">
+                                <span class="page-title-icon bg-gradient-primary text-white mr-2">
+                                    <i class="mdi mdi-package-variant"></i>
+                                </span> Ürün Güncelle
+                            </h3>
+                            <nav aria-label="breadcrumb">
+                                <ul class="breadcrumb">
+                                    <li class="breadcrumb-item active" aria-current="page">
+                                        <span></span>Overview <i class="mdi mdi-alert-circle-outline icon-sm text-primary align-middle"></i>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <div class="form-sample">
+                            @using (Html.BeginForm("UrunGetir", "Urun", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                            {
+                                @Html.HiddenFor(x => x.UrunId)
+                                @Html.LabelFor(x => x.UrunAd)
+                                @Html.TextBoxFor(x => x.UrunAd, new { @class = "form-control" })
+                                <br />
+                                @Html.LabelFor(x => x.Marka)
+                                @Html.TextBoxFor(x => x.Marka, new { @class = "form-control" })
+                                <br />
+                                @Html.LabelFor(x => x.Model)
+                                @Html.TextBoxFor(x => x.Model, new { @class = "form-control" })
+                                <br />
+                                @Html.LabelFor(x => x.Stok)
+                                @Html.TextBoxFor(x => x.Stok, new { @class = "form-control" })
+                                <br />
+                                @Html.LabelFor(x => x.AlisFiyati)
+                                @Html.TextBoxFor(x => x.AlisFiyati, new { @class = "form-control" })
+                                <br />
+                                @Html.LabelFor(x => x.SatisFiyati)
+                                @Html.TextBoxFor(x => x.SatisFiyati, new { @class = "form-control" })
+                                <br />
+                                @Html.LabelFor(x => x.KategoriId)
+                                @Html.DropDownListFor(x => x.KategoriId, (List<SelectListItem>)ViewBag.kate, new { @class = "form-control" })
+                                <br />
+                                @Html.LabelFor(x => x.UrunGorsel)
+                                <input type="file" name="UrunGorsel" class="form-control" />
+                                <img id="resim" width="256px" style="@(Model.UrunGorsel == "test" ? "display:none;" : "")" src="@Model.UrunGorsel" />
+                                <br />
+                                @Html.LabelFor(x => x.Durum)
+                                @Html.TextBoxFor(x => x.Durum, new { @class = "form-control" })
+                                <br />
+                                <button class="btn btn-warning">Güncelle</button>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

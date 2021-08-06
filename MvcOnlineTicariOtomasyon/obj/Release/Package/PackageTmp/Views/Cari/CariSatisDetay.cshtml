@@ -1,0 +1,57 @@
+﻿@using MvcOnlineTicariOtomasyon.Models.Siniflar
+@model List<SatisHareket>
+@{
+    ViewBag.Title = "CariSatisDetay";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="row">
+            <div class="col-12">
+                <div class="card card-margin">
+                    <div class="card-body">
+                        <div class="page-header">
+                            <h3 class="page-title">
+                                <span class="page-title-icon bg-gradient-primary text-white mr-2">
+                                    <i class="mdi mdi-account-star"></i>
+                                </span> @ViewBag.CariAd Siparişleri
+                            </h3>
+                            <nav aria-label="breadcrumb">
+                                <ul class="breadcrumb">
+                                    <li class="breadcrumb-item active" aria-current="page">
+                                        <span></span>Overview <i class="mdi mdi-alert-circle-outline icon-sm text-primary align-middle"></i>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <div class="form-sample">
+                            <table class="table table-striped">
+                                <tr>
+                                    <th>Satış Id</th>
+                                    <th>Ürün</th>
+                                    <th>Adet</th>
+                                    <th>Toplam</th>
+                                    <th>Personel</th>
+                                    <th>Tarih</th>
+                                    <th>Yazdır</th>
+                                </tr>
+                                @foreach (var x in Model)
+                                {
+                                    <tr>
+                                        <td>@x.SatisId</td>
+                                        <td>@x.Urun.UrunAd</td>
+                                        <td>@x.Adet</td>
+                                        <td>@x.ToplamTutar</td>
+                                        <td>@x.Personel.PersonelAd @x.Personel.PersonelSoyad</td>
+                                        <td>@x.Tarih</td>
+                                        <td><a href="#" class="btn btn-default" style="background-color:greenyellow"><i class="fas fa-print"></i>  Yazdır</a></td>
+                                    </tr>
+                                }
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

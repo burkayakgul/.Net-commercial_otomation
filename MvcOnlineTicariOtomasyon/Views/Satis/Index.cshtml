@@ -1,0 +1,66 @@
+﻿@using MvcOnlineTicariOtomasyon.Models.Siniflar
+@model List<SatisHareket>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="row">
+            <div class="col-12">
+                <div class="card card-margin">
+                    <div class="card-body">
+                        <div class="page-header">
+                            <h3 class="page-title">
+                                <span class="page-title-icon bg-gradient-primary text-white mr-2">
+                                    <i class="mdi mdi-sale"></i>
+                                </span> Satışlar
+                            </h3>
+                            <nav aria-label="breadcrumb">
+                                <ul class="breadcrumb">
+                                    <li class="breadcrumb-item active" aria-current="page">
+                                        <span></span>Overview <i class="mdi mdi-alert-circle-outline icon-sm text-primary align-middle"></i>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <div class="form-sample">
+                            <table class="table table-striped">
+                                <tr>
+                                    <th width="70px;">Satış Id</th>
+                                    <th>Ürün Ad</th>
+                                    <th>Marka - Model</th>
+                                    <th>Adet</th>
+                                    <th>Fiyat</th>
+                                    <th>Toplam Tutar</th>
+                                    <th>Cari</th>
+                                    <th>Personel</th>
+                                    <th width="70px;">Güncelle</th>
+                                    <th width="70px;">Detaylar</th>
+                                </tr>
+                                @foreach (var x in Model)
+                                {
+                                    <tr>
+                                        <td>@x.SatisId</td>
+                                        <td>@x.Urun.UrunAd</td>
+                                        <td>@x.Urun.Marka - @x.Urun.Model</td>
+                                        <td>@x.Adet</td>
+                                        <td>@x.Fiyat</td>
+                                        <td>@x.ToplamTutar</td>
+                                        <td>@x.Cariler.CariAd @x.Cariler.CariSoyad</td>
+                                        <td>@x.Personel.PersonelAd @x.Personel.PersonelSoyad</td>
+                                        <td><a href="/Satis/SatisGuncelle/@x.SatisId" class="btn btn-warning"><i class="fas fa-pen"></i></a></td>
+                                        <td><a href="/Satis/SatisDetay/@x.SatisId" class="btn btn-info"><i class="fas fa-info-circle"></i></a></td>
+
+                                    </tr>
+                                }
+                            </table>
+                            <br />
+                            <a href="/Satis/SatisEkle" class="btn btn-success"><i class="fas fa-plus-circle"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

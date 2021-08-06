@@ -1,0 +1,78 @@
+﻿@model MvcOnlineTicariOtomasyon.Models.Siniflar.SatisHareket
+@{
+    ViewBag.Title = "SatisDetay";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="row">
+            <div class="col-12">
+                <div class="card card-margin">
+                    <div class="card-body">
+                        <div class="page-header">
+                            <h3 class="page-title">
+                                <span class="page-title-icon bg-gradient-primary text-white mr-2">
+                                    <i class="mdi mdi-sale"></i>
+                                </span> Satış Detay
+                            </h3>
+                            <nav aria-label="breadcrumb">
+                                <ul class="breadcrumb">
+                                    <li class="breadcrumb-item active" aria-current="page">
+                                        <span></span>Overview <i class="mdi mdi-alert-circle-outline icon-sm text-primary align-middle"></i>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <div class="form-sample">
+                             <table class="table table-striped">
+                                <tr>
+                                    <th>Satış Id</th>
+                                    <th>Ürün</th>
+                                    <th>Cari</th>
+                                    <th>Personel</th>
+                                    <th>Adet</th>
+                                    <th>Toplam</th>
+                                    <th>Tarih</th>
+                                    <th>Yazdır</th>
+                                </tr>
+                                <tr>
+                                    <td>@Model.SatisId</td>
+                                    <td>@Model.Urun.UrunAd</td>
+                                    <td>@Model.Cariler.CariAd @Model.Cariler.CariSoyad</td>
+                                    <td>@Model.Personel.PersonelAd @Model.Personel.PersonelSoyad</td>
+                                    <td>@Model.Adet</td>
+                                    <td>@Model.ToplamTutar</td>
+                                    <td>@Model.Tarih</td>
+                                    <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+    Launch demo modal
+</button></td>
+                                </tr>
+                            </table>
+                            <a href="/Personel/PersonelEkle" class="btn btn-success">Yeni Personel</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>

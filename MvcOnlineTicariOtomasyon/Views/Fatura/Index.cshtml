@@ -1,0 +1,66 @@
+﻿@using MvcOnlineTicariOtomasyon.Models.Siniflar
+@model List<Faturalar>
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="row">
+            <div class="col-12">
+                <div class="card card-margin">
+                    <div class="card-body">
+                        <div class="page-header">
+                            <h3 class="page-title">
+                                <span class="page-title-icon bg-gradient-primary text-white mr-2">
+                                    <i class="mdi mdi-receipt"></i>
+                                </span> Faturalar
+                            </h3>
+                            <nav aria-label="breadcrumb">
+                                <ul class="breadcrumb">
+                                    <li class="breadcrumb-item active" aria-current="page">
+                                        <span></span>Overview <i class="mdi mdi-alert-circle-outline icon-sm text-primary align-middle"></i>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <div class="form-sample">
+                            <table class="table table-striped">
+                                <tr>
+                                    <th width="70px;">Fatura Id</th>
+                                    <th>Seri No</th>
+                                    <th>Sıra No</th>
+                                    <th>Vergi Dairesi</th>
+                                    <th>Teslim Alan</th>
+                                    <th>Teslim Eden</th>
+                                    <th>Tarih</th>
+                                    <th>Saat</th>
+                                    <th>Toplam</th>
+                                    <th width="70px;">Düzenle</th>
+                                    <th width="70px;">Detay</th>
+                                </tr>
+                                @foreach (var x in Model)
+                                {
+                                    <tr>
+                                        <td>@x.FaturaId</td>
+                                        <td>@x.FaturaSeriNo</td>
+                                        <td>@x.FaturaSıraNo</td>
+                                        <td>@x.VergiDairesi</td>
+                                        <td>@x.TeslimAlan</td>
+                                        <td>@x.TeslimEden</td>
+                                        <td>@x.Tarih</td>
+                                        <td>@x.Saat</td>
+                                        <td>@x.Toplam</td>
+                                        <td><a href="/Fatura/FaturaGuncelle/@x.FaturaId" class="btn btn-warning"><i class="fas fa-pen"></i></a></td>
+                                        <td><a target="_tab" href="/Fatura/FaturaDetay/@x.FaturaId" class="btn btn-info"><i class="fas fa-info-circle"></i></a></td>
+                                    </tr>
+                                }
+                            </table>
+                            <br />
+                            <a href="/Fatura/FaturaEkle/" class="btn btn-success"><i class="fas fa-plus-circle"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

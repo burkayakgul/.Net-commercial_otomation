@@ -1,0 +1,61 @@
+﻿@using MvcOnlineTicariOtomasyon.Models.Siniflar
+@model List<Personel>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="row">
+            <div class="col-12">
+                <div class="card card-margin">
+                    <div class="card-body">
+                        <div class="page-header">
+                            <h3 class="page-title">
+                                <span class="page-title-icon bg-gradient-primary text-white mr-2">
+                                    <i class="mdi mdi-account-circle"></i>
+                                </span> Personeller
+                            </h3>
+                            <nav aria-label="breadcrumb">
+                                <ul class="breadcrumb">
+                                    <li class="breadcrumb-item active" aria-current="page">
+                                        <span></span>Overview <i class="mdi mdi-alert-circle-outline icon-sm text-primary align-middle"></i>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <div class="form-sample">
+                            <table class="table table-striped">
+                                <tr>
+                                    <th width="70px;">Personel No</th>
+                                    <th>Ad</th>
+                                    <th>Soyad</th>
+                                    <th>Görsel</th>
+                                    <th>Departman</th>
+                                    <th width="70px;">Sil</th>
+                                    <th width="70px;">Güncelle</th>
+                                    <th width="70px;">Satışlar</th>
+                                </tr>
+                                @foreach (var x in Model)
+                                {
+                                    <tr>
+                                        <td>@x.PersonelId</td>
+                                        <td>@x.PersonelAd</td>
+                                        <td>@x.PersonelSoyad</td>
+                                        <td>@x.PersonelGorsel</td>
+                                        <td>@x.Departman.DepartmanAd</td>
+                                        <td><a href="/Personel/PersonelSil/" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a></td>
+                                        <td><a href="/Personel/PersonelGuncelle/@x.PersonelId" class="btn btn-warning"><i class="fas fa-pen"></i></a></td>
+                                        <td><a href="/Departman/DepartmanPersonelSatis/@x.PersonelId" class="btn btn-info"><i class="fas fa-info-circle"></i></a></td>
+                                    </tr>
+                                }
+                            </table>
+                            <br />
+                            <a href="/Personel/PersonelEkle" class="btn btn-success"><i class="fas fa-plus-circle"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

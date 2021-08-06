@@ -1,0 +1,49 @@
+﻿@model MvcOnlineTicariOtomasyon.Models.Siniflar.Personel
+@{
+    ViewBag.Title = "PersonelEkle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="row">
+            <div class="col-12">
+                <div class="card card-margin">
+                    <div class="card-body">
+                        <div class="page-header">
+                            <h3 class="page-title">
+                                <span class="page-title-icon bg-gradient-primary text-white mr-2">
+                                    <i class="mdi mdi-account-circle"></i>
+                                </span> Personel Ekle
+                            </h3>
+                            <nav aria-label="breadcrumb">
+                                <ul class="breadcrumb">
+                                    <li class="breadcrumb-item active" aria-current="page">
+                                        <span></span>Overview <i class="mdi mdi-alert-circle-outline icon-sm text-primary align-middle"></i>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <div class="form-sample">
+                            <form class="form-group" method="post">
+                                @Html.HiddenFor(x => x.PersonelId)
+                                @Html.LabelFor(x => x.PersonelAd)
+                                @Html.TextBoxFor(x => x.PersonelAd, new { @class = "form-control" })
+                                <br />
+                                @Html.LabelFor(x => x.PersonelSoyad)
+                                @Html.TextBoxFor(x => x.PersonelSoyad, new { @class = "form-control" })
+                                <br />
+                                @Html.LabelFor(x => x.PersonelGorsel)
+                                @Html.TextBoxFor(x => x.PersonelGorsel, new { @class = "form-control" })
+                                <br />
+                                @Html.LabelFor(x => x.DepartmanId)
+                                @Html.DropDownListFor(x => x.DepartmanId, (List<SelectListItem>)ViewBag.departman, new { @class = "form-control" })
+                                <br />
+                                <button class="btn btn-success">Kaydet</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

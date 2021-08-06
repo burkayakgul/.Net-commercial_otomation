@@ -1,0 +1,60 @@
+﻿@using MvcOnlineTicariOtomasyon.Models.Siniflar
+@model List<Cariler>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="row">
+            <div class="col-12">
+                <div class="card card-margin">
+                    <div class="card-body">
+                        <div class="page-header">
+                            <h3 class="page-title">
+                                <span class="page-title-icon bg-gradient-primary text-white mr-2">
+                                    <i class="mdi mdi-account-star"></i>
+                                </span> Cariler
+                            </h3>
+                            <nav aria-label="breadcrumb">
+                                <ul class="breadcrumb">
+                                    <li class="breadcrumb-item active" aria-current="page">
+                                        <span></span>Overview <i class="mdi mdi-alert-circle-outline icon-sm text-primary align-middle"></i>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <div class="form-sample">
+                            <table class="table table-striped">
+                                <tr>
+                                    <th>Cari Id</th>
+                                    <th>Ad</th>
+                                    <th>Soyad</th>
+                                    <th>Şehir</th>
+                                    <th>Mail</th>
+                                    <th>Sil</th>
+                                    <th>Güncelle</th>
+                                    <th>Detaylar</th>
+                                </tr>
+                                @foreach (var x in Model)
+                                {
+                                    <tr>
+                                        <td>@x.CariId</td>
+                                        <td>@x.CariAd</td>
+                                        <td>@x.CariSoyad</td>
+                                        <td>@x.CariSehir</td>
+                                        <td>@x.CariMail</td>
+                                        <td><a class="btn btn-danger" href="/Cari/CariSil/@x.CariId"><i class="fas fa-trash-alt"></i></a></td>
+                                        <td><a class="btn btn-warning" href="/Cari/CariGuncelle/@x.CariId"><i class="fas fa-pen"></i></a></td>
+                                        <td><a class="btn btn-info" href="/Cari/CariSatisDetay/@x.CariId"><i class="fas fa-info-circle"></i></a></td>
+                                    </tr>
+                                }
+                            </table>
+                            <a href="/Cari/YeniCariEkle/" class="btn btn-success"><i class="fas fa-plus-circle"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,18 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "library": "twitter-bootstrap@5.0.2",
+      "destination": "lib/twitter-bootstrap/"
+    },
+    {
+      "library": "jquery@3.6.0",
+      "destination": "lib/jquery/"
+    },
+    {
+      "library": "dropzone@5.9.2",
+      "destination": "lib/dropzone/"
+    }
+  ]
+}

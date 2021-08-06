@@ -1,0 +1,614 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C9066ECE-BDCD-4DFC-BA0C-62B8587E3F5E}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MvcOnlineTicariOtomasyon</RootNamespace>
+    <AssemblyName>MvcOnlineTicariOtomasyon</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44379</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Castle.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Castle.Core.4.4.1\lib\net45\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Windsor, Version=5.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Castle.Windsor.5.1.1\lib\net45\Castle.Windsor.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=4.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.4.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Remoting" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\Admin\AdminController.cs" />
+    <Compile Include="Controllers\Admin\CariController.cs" />
+    <Compile Include="Controllers\Admin\DepartmanController.cs" />
+    <Compile Include="Controllers\Admin\FaturaController.cs" />
+    <Compile Include="Controllers\Admin\HomeController.cs" />
+    <Compile Include="Controllers\Admin\IstatistikController.cs" />
+    <Compile Include="Controllers\Admin\KategoriController.cs" />
+    <Compile Include="Controllers\Admin\PersonelController.cs" />
+    <Compile Include="Controllers\Admin\SatisController.cs" />
+    <Compile Include="Controllers\Admin\UrunController.cs" />
+    <Compile Include="Controllers\Admin\YazdirController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Siniflar\Admin.cs" />
+    <Compile Include="Models\Siniflar\Cariler.cs" />
+    <Compile Include="Models\Siniflar\Context.cs" />
+    <Compile Include="Models\Siniflar\Degerler.cs" />
+    <Compile Include="Models\Siniflar\Departman.cs" />
+    <Compile Include="Models\Siniflar\FaturaKalem.cs" />
+    <Compile Include="Models\Siniflar\Faturalar.cs" />
+    <Compile Include="Models\Siniflar\Gider.cs" />
+    <Compile Include="Models\Siniflar\Kategori.cs" />
+    <Compile Include="Models\Siniflar\KategoriMarka.cs" />
+    <Compile Include="Models\Siniflar\KategoriOzellik.cs" />
+    <Compile Include="Models\Siniflar\Marka.cs" />
+    <Compile Include="Models\Siniflar\Model.cs" />
+    <Compile Include="Models\Siniflar\Ozellik.cs" />
+    <Compile Include="Models\Siniflar\Personel.cs" />
+    <Compile Include="Models\Siniflar\SatisHareket.cs" />
+    <Compile Include="Models\Siniflar\Stok.cs" />
+    <Compile Include="Models\Siniflar\Urun.cs" />
+    <Compile Include="Models\Siniflar\UrunGorsel.cs" />
+    <Compile Include="Models\Siniflar\UrunMarkaModel.cs" />
+    <Compile Include="Models\Siniflar\UrunOzellik.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\css\style.css" />
+    <Content Include="assets\images\dashboard\circle.png" />
+    <Content Include="assets\images\dashboard\circle.svg" />
+    <Content Include="assets\images\dashboard\img_1.jpg" />
+    <Content Include="assets\images\dashboard\img_2.jpg" />
+    <Content Include="assets\images\dashboard\img_3.jpg" />
+    <Content Include="assets\images\dashboard\img_4.jpg" />
+    <Content Include="assets\images\faces-clipart\pic-1.png" />
+    <Content Include="assets\images\faces-clipart\pic-2.png" />
+    <Content Include="assets\images\faces-clipart\pic-3.png" />
+    <Content Include="assets\images\faces-clipart\pic-4.png" />
+    <Content Include="assets\images\faces\face1.jpg" />
+    <Content Include="assets\images\faces\face10.jpg" />
+    <Content Include="assets\images\faces\face11.jpg" />
+    <Content Include="assets\images\faces\face12.jpg" />
+    <Content Include="assets\images\faces\face13.jpg" />
+    <Content Include="assets\images\faces\face14.jpg" />
+    <Content Include="assets\images\faces\face15.jpg" />
+    <Content Include="assets\images\faces\face16.jpg" />
+    <Content Include="assets\images\faces\face17.jpg" />
+    <Content Include="assets\images\faces\face18.jpg" />
+    <Content Include="assets\images\faces\face19.jpg" />
+    <Content Include="assets\images\faces\face2.jpg" />
+    <Content Include="assets\images\faces\face20.jpg" />
+    <Content Include="assets\images\faces\face21.jpg" />
+    <Content Include="assets\images\faces\face22.jpg" />
+    <Content Include="assets\images\faces\face23.jpg" />
+    <Content Include="assets\images\faces\face24.jpg" />
+    <Content Include="assets\images\faces\face25.jpg" />
+    <Content Include="assets\images\faces\face26.jpg" />
+    <Content Include="assets\images\faces\face27.jpg" />
+    <Content Include="assets\images\faces\face3.jpg" />
+    <Content Include="assets\images\faces\face4.jpg" />
+    <Content Include="assets\images\faces\face5.jpg" />
+    <Content Include="assets\images\faces\face6.jpg" />
+    <Content Include="assets\images\faces\face7.jpg" />
+    <Content Include="assets\images\faces\face8.jpg" />
+    <Content Include="assets\images\faces\face9.jpg" />
+    <Content Include="assets\images\favicon.ico" />
+    <Content Include="assets\images\favicon.png" />
+    <Content Include="assets\images\logo-mini.svg" />
+    <Content Include="assets\images\logo.svg" />
+    <Content Include="assets\images\sprites\blue.png" />
+    <Content Include="assets\images\sprites\dark.png" />
+    <Content Include="assets\images\sprites\flag.png" />
+    <Content Include="assets\images\sprites\green.png" />
+    <Content Include="assets\images\sprites\jsgrid-icons.png" />
+    <Content Include="assets\images\sprites\red.png" />
+    <Content Include="assets\images\sprites\yellow.png" />
+    <Content Include="assets\js\chart.js" />
+    <Content Include="assets\js\dashboard.js" />
+    <Content Include="assets\js\file-upload.js" />
+    <Content Include="assets\js\hoverable-collapse.js" />
+    <Content Include="assets\js\misc.js" />
+    <Content Include="assets\js\off-canvas.js" />
+    <Content Include="assets\js\todo.js" />
+    <Content Include="assets\js\todolist.js" />
+    <Content Include="assets\vendors\chart.js\Chart.min.js" />
+    <Content Include="assets\vendors\css\vendor.bundle.base.css" />
+    <Content Include="assets\vendors\js\vendor.bundle.base.js" />
+    <Content Include="assets\vendors\mdi\css\materialdesignicons.min.css" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Site.css" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="lib\css\style.css" />
+    <Content Include="lib\dropzone\basic.css" />
+    <Content Include="lib\dropzone\basic.min.css" />
+    <Content Include="lib\dropzone\dropzone-amd-module.js" />
+    <Content Include="lib\dropzone\dropzone-amd-module.min.js" />
+    <Content Include="lib\dropzone\dropzone.css" />
+    <Content Include="lib\dropzone\dropzone.js" />
+    <Content Include="lib\dropzone\dropzone.min.css" />
+    <Content Include="lib\dropzone\dropzone.min.js" />
+    <Content Include="lib\dropzone\min\basic.min.css" />
+    <Content Include="lib\dropzone\min\dropzone-amd-module.min.js" />
+    <Content Include="lib\dropzone\min\dropzone.min.css" />
+    <Content Include="lib\dropzone\min\dropzone.min.js" />
+    <Content Include="lib\file-upload\css\blueimp-gallery.min.css" />
+    <Content Include="lib\file-upload\css\bootstrap.min.css" />
+    <Content Include="lib\file-upload\css\jquery.fileupload-noscript.css" />
+    <Content Include="lib\file-upload\css\jquery.fileupload-ui-noscript.css" />
+    <Content Include="lib\file-upload\css\jquery.fileupload-ui.css" />
+    <Content Include="lib\file-upload\css\jquery.fileupload.css" />
+    <Content Include="lib\file-upload\js\canvas-to-blob.min.js" />
+    <Content Include="lib\file-upload\js\cors\jquery.postmessage-transport.js" />
+    <Content Include="lib\file-upload\js\cors\jquery.xdr-transport.js" />
+    <Content Include="lib\file-upload\js\demo.js" />
+    <Content Include="lib\file-upload\js\jquery.blueimp-gallery.min.js" />
+    <Content Include="lib\file-upload\js\jquery.fileupload-audio.js" />
+    <Content Include="lib\file-upload\js\jquery.fileupload-image.js" />
+    <Content Include="lib\file-upload\js\jquery.fileupload-process.js" />
+    <Content Include="lib\file-upload\js\jquery.fileupload-ui.js" />
+    <Content Include="lib\file-upload\js\jquery.fileupload-validate.js" />
+    <Content Include="lib\file-upload\js\jquery.fileupload-video.js" />
+    <Content Include="lib\file-upload\js\jquery.fileupload.js" />
+    <Content Include="lib\file-upload\js\jquery.iframe-transport.js" />
+    <Content Include="lib\file-upload\js\load-image.all.min.js" />
+    <Content Include="lib\file-upload\js\tmpl.min.js" />
+    <Content Include="lib\file-upload\js\vendor\jquery.ui.widget.js" />
+    <Content Include="lib\jquery\jquery.js" />
+    <Content Include="lib\jquery\jquery.min.js" />
+    <Content Include="lib\jquery\jquery.slim.js" />
+    <Content Include="lib\jquery\jquery.slim.min.js" />
+    <Content Include="lib\js\script.js" />
+    <Content Include="lib\twitter-bootstrap\css\bootstrap-grid.css" />
+    <Content Include="lib\twitter-bootstrap\css\bootstrap-grid.min.css" />
+    <Content Include="lib\twitter-bootstrap\css\bootstrap-grid.rtl.css" />
+    <Content Include="lib\twitter-bootstrap\css\bootstrap-grid.rtl.min.css" />
+    <Content Include="lib\twitter-bootstrap\css\bootstrap-reboot.css" />
+    <Content Include="lib\twitter-bootstrap\css\bootstrap-reboot.min.css" />
+    <Content Include="lib\twitter-bootstrap\css\bootstrap-reboot.rtl.css" />
+    <Content Include="lib\twitter-bootstrap\css\bootstrap-reboot.rtl.min.css" />
+    <Content Include="lib\twitter-bootstrap\css\bootstrap-utilities.css" />
+    <Content Include="lib\twitter-bootstrap\css\bootstrap-utilities.min.css" />
+    <Content Include="lib\twitter-bootstrap\css\bootstrap-utilities.rtl.css" />
+    <Content Include="lib\twitter-bootstrap\css\bootstrap-utilities.rtl.min.css" />
+    <Content Include="lib\twitter-bootstrap\css\bootstrap.css" />
+    <Content Include="lib\twitter-bootstrap\css\bootstrap.min.css" />
+    <Content Include="lib\twitter-bootstrap\css\bootstrap.rtl.css" />
+    <Content Include="lib\twitter-bootstrap\css\bootstrap.rtl.min.css" />
+    <Content Include="lib\twitter-bootstrap\js\bootstrap.bundle.js" />
+    <Content Include="lib\twitter-bootstrap\js\bootstrap.bundle.min.js" />
+    <Content Include="lib\twitter-bootstrap\js\bootstrap.esm.js" />
+    <Content Include="lib\twitter-bootstrap\js\bootstrap.esm.min.js" />
+    <Content Include="lib\twitter-bootstrap\js\bootstrap.js" />
+    <Content Include="lib\twitter-bootstrap\js\bootstrap.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="lib\twitter-bootstrap\css\bootstrap-grid.css.map" />
+    <Content Include="lib\twitter-bootstrap\css\bootstrap-grid.min.css.map" />
+    <Content Include="lib\twitter-bootstrap\css\bootstrap-grid.rtl.css.map" />
+    <Content Include="lib\twitter-bootstrap\css\bootstrap-grid.rtl.min.css.map" />
+    <Content Include="lib\twitter-bootstrap\css\bootstrap-reboot.css.map" />
+    <Content Include="lib\twitter-bootstrap\css\bootstrap-reboot.min.css.map" />
+    <Content Include="lib\twitter-bootstrap\css\bootstrap-reboot.rtl.css.map" />
+    <Content Include="lib\twitter-bootstrap\css\bootstrap-reboot.rtl.min.css.map" />
+    <Content Include="lib\twitter-bootstrap\css\bootstrap-utilities.css.map" />
+    <Content Include="lib\twitter-bootstrap\css\bootstrap-utilities.min.css.map" />
+    <Content Include="lib\twitter-bootstrap\css\bootstrap-utilities.rtl.css.map" />
+    <Content Include="lib\twitter-bootstrap\css\bootstrap-utilities.rtl.min.css.map" />
+    <Content Include="lib\twitter-bootstrap\css\bootstrap.css.map" />
+    <Content Include="lib\twitter-bootstrap\css\bootstrap.min.css.map" />
+    <Content Include="lib\twitter-bootstrap\css\bootstrap.rtl.css.map" />
+    <Content Include="lib\twitter-bootstrap\css\bootstrap.rtl.min.css.map" />
+    <Content Include="lib\twitter-bootstrap\js\bootstrap.bundle.js.map" />
+    <Content Include="lib\twitter-bootstrap\js\bootstrap.bundle.min.js.map" />
+    <Content Include="lib\twitter-bootstrap\js\bootstrap.esm.js.map" />
+    <Content Include="lib\twitter-bootstrap\js\bootstrap.esm.min.js.map" />
+    <Content Include="lib\twitter-bootstrap\js\bootstrap.js.map" />
+    <Content Include="lib\twitter-bootstrap\js\bootstrap.min.js.map" />
+    <Content Include="lib\twitter-bootstrap\scss\_accordion.scss" />
+    <Content Include="lib\twitter-bootstrap\scss\_alert.scss" />
+    <Content Include="lib\twitter-bootstrap\scss\_badge.scss" />
+    <Content Include="lib\twitter-bootstrap\scss\_breadcrumb.scss" />
+    <Content Include="lib\twitter-bootstrap\scss\_button-group.scss" />
+    <Content Include="lib\twitter-bootstrap\scss\_buttons.scss" />
+    <Content Include="lib\twitter-bootstrap\scss\_card.scss" />
+    <Content Include="lib\twitter-bootstrap\scss\_carousel.scss" />
+    <Content Include="lib\twitter-bootstrap\scss\_close.scss" />
+    <Content Include="lib\twitter-bootstrap\scss\_containers.scss" />
+    <Content Include="lib\twitter-bootstrap\scss\_dropdown.scss" />
+    <Content Include="lib\twitter-bootstrap\scss\_forms.scss" />
+    <Content Include="lib\twitter-bootstrap\scss\_functions.scss" />
+    <Content Include="lib\twitter-bootstrap\scss\_grid.scss" />
+    <Content Include="lib\twitter-bootstrap\scss\_helpers.scss" />
+    <Content Include="lib\twitter-bootstrap\scss\_images.scss" />
+    <Content Include="lib\twitter-bootstrap\scss\_list-group.scss" />
+    <Content Include="lib\twitter-bootstrap\scss\_mixins.scss" />
+    <Content Include="lib\twitter-bootstrap\scss\_modal.scss" />
+    <Content Include="lib\twitter-bootstrap\scss\_nav.scss" />
+    <Content Include="lib\twitter-bootstrap\scss\_navbar.scss" />
+    <Content Include="lib\twitter-bootstrap\scss\_offcanvas.scss" />
+    <Content Include="lib\twitter-bootstrap\scss\_pagination.scss" />
+    <Content Include="lib\twitter-bootstrap\scss\_popover.scss" />
+    <Content Include="lib\twitter-bootstrap\scss\_progress.scss" />
+    <Content Include="lib\twitter-bootstrap\scss\_reboot.scss" />
+    <Content Include="lib\twitter-bootstrap\scss\bootstrap-grid.scss" />
+    <Content Include="lib\twitter-bootstrap\scss\_root.scss" />
+    <Content Include="lib\twitter-bootstrap\scss\_spinners.scss" />
+    <Content Include="lib\twitter-bootstrap\scss\_tables.scss" />
+    <Content Include="lib\twitter-bootstrap\scss\_toasts.scss" />
+    <Content Include="lib\twitter-bootstrap\scss\_tooltip.scss" />
+    <Content Include="lib\twitter-bootstrap\scss\_transitions.scss" />
+    <Content Include="lib\twitter-bootstrap\scss\_type.scss" />
+    <Content Include="lib\twitter-bootstrap\scss\_utilities.scss" />
+    <Content Include="lib\twitter-bootstrap\scss\_variables.scss" />
+    <Content Include="lib\twitter-bootstrap\scss\bootstrap-reboot.scss" />
+    <Content Include="lib\twitter-bootstrap\scss\bootstrap-utilities.scss" />
+    <Content Include="lib\twitter-bootstrap\scss\bootstrap.scss" />
+    <Content Include="lib\twitter-bootstrap\scss\forms\_floating-labels.scss" />
+    <Content Include="lib\twitter-bootstrap\scss\forms\_form-check.scss" />
+    <Content Include="lib\twitter-bootstrap\scss\forms\_form-control.scss" />
+    <Content Include="lib\twitter-bootstrap\scss\forms\_form-range.scss" />
+    <Content Include="lib\twitter-bootstrap\scss\forms\_form-select.scss" />
+    <Content Include="lib\twitter-bootstrap\scss\forms\_form-text.scss" />
+    <Content Include="lib\twitter-bootstrap\scss\forms\_input-group.scss" />
+    <Content Include="lib\twitter-bootstrap\scss\forms\_labels.scss" />
+    <Content Include="lib\twitter-bootstrap\scss\forms\_validation.scss" />
+    <Content Include="lib\twitter-bootstrap\scss\helpers\_clearfix.scss" />
+    <Content Include="lib\twitter-bootstrap\scss\helpers\_colored-links.scss" />
+    <Content Include="lib\twitter-bootstrap\scss\helpers\_position.scss" />
+    <Content Include="lib\twitter-bootstrap\scss\helpers\_ratio.scss" />
+    <Content Include="lib\twitter-bootstrap\scss\helpers\_stretched-link.scss" />
+    <Content Include="lib\twitter-bootstrap\scss\helpers\_text-truncation.scss" />
+    <Content Include="lib\twitter-bootstrap\scss\helpers\_visually-hidden.scss" />
+    <Content Include="lib\twitter-bootstrap\scss\mixins\_alert.scss" />
+    <Content Include="lib\twitter-bootstrap\scss\mixins\_border-radius.scss" />
+    <Content Include="lib\twitter-bootstrap\scss\mixins\_box-shadow.scss" />
+    <Content Include="lib\twitter-bootstrap\scss\mixins\_breakpoints.scss" />
+    <Content Include="lib\twitter-bootstrap\scss\mixins\_buttons.scss" />
+    <Content Include="lib\twitter-bootstrap\scss\mixins\_caret.scss" />
+    <Content Include="lib\twitter-bootstrap\scss\mixins\_clearfix.scss" />
+    <Content Include="lib\twitter-bootstrap\scss\mixins\_color-scheme.scss" />
+    <Content Include="lib\twitter-bootstrap\scss\mixins\_container.scss" />
+    <Content Include="lib\twitter-bootstrap\scss\mixins\_deprecate.scss" />
+    <Content Include="lib\twitter-bootstrap\scss\mixins\_forms.scss" />
+    <Content Include="lib\twitter-bootstrap\scss\mixins\_gradients.scss" />
+    <Content Include="lib\twitter-bootstrap\scss\mixins\_grid.scss" />
+    <Content Include="lib\twitter-bootstrap\scss\mixins\_image.scss" />
+    <Content Include="lib\twitter-bootstrap\scss\mixins\_list-group.scss" />
+    <Content Include="lib\twitter-bootstrap\scss\mixins\_lists.scss" />
+    <Content Include="lib\twitter-bootstrap\scss\mixins\_pagination.scss" />
+    <Content Include="lib\twitter-bootstrap\scss\mixins\_reset-text.scss" />
+    <Content Include="lib\twitter-bootstrap\scss\mixins\_resize.scss" />
+    <Content Include="lib\twitter-bootstrap\scss\mixins\_table-variants.scss" />
+    <Content Include="lib\twitter-bootstrap\scss\mixins\_text-truncate.scss" />
+    <Content Include="lib\jquery\jquery.min.map" />
+    <Content Include="lib\twitter-bootstrap\scss\mixins\_transition.scss" />
+    <Content Include="lib\twitter-bootstrap\scss\mixins\_utilities.scss" />
+    <Content Include="lib\twitter-bootstrap\scss\mixins\_visually-hidden.scss" />
+    <Content Include="lib\twitter-bootstrap\scss\utilities\_api.scss" />
+    <Content Include="lib\twitter-bootstrap\scss\vendor\_rfs.scss" />
+    <Content Include="lib\jquery\jquery.slim.min.map" />
+    <Content Include="assets\css\style.css.map" />
+    <Content Include="assets\fonts\Ubuntu\Ubuntu-Bold.eot" />
+    <Content Include="assets\fonts\Ubuntu\Ubuntu-Bold.ttf" />
+    <Content Include="assets\fonts\Ubuntu\Ubuntu-Bold.woff" />
+    <Content Include="assets\fonts\Ubuntu\Ubuntu-Bold.woff2" />
+    <Content Include="assets\fonts\Ubuntu\Ubuntu-Light.eot" />
+    <Content Include="assets\fonts\Ubuntu\Ubuntu-Light.ttf" />
+    <Content Include="assets\fonts\Ubuntu\Ubuntu-Light.woff" />
+    <Content Include="assets\fonts\Ubuntu\Ubuntu-Light.woff2" />
+    <Content Include="assets\fonts\Ubuntu\Ubuntu-Medium.eot" />
+    <Content Include="assets\fonts\Ubuntu\Ubuntu-Medium.ttf" />
+    <Content Include="assets\fonts\Ubuntu\Ubuntu-Medium.woff" />
+    <Content Include="assets\fonts\Ubuntu\Ubuntu-Medium.woff2" />
+    <Content Include="assets\fonts\Ubuntu\Ubuntu-Regular.eot" />
+    <Content Include="assets\fonts\Ubuntu\Ubuntu-Regular.ttf" />
+    <Content Include="assets\fonts\Ubuntu\Ubuntu-Regular.woff" />
+    <Content Include="assets\fonts\Ubuntu\Ubuntu-Regular.woff2" />
+    <Content Include="assets\scss\components\_badges.scss" />
+    <Content Include="assets\scss\components\_bootstrap-progress.scss" />
+    <Content Include="assets\scss\components\_breadcrumbs.scss" />
+    <Content Include="assets\scss\components\_buttons.scss" />
+    <Content Include="assets\scss\components\_cards.scss" />
+    <Content Include="assets\scss\components\_checkbox-radio.scss" />
+    <Content Include="assets\scss\components\_dropdown.scss" />
+    <Content Include="assets\scss\components\_forms.scss" />
+    <Content Include="assets\scss\components\_icons.scss" />
+    <Content Include="assets\scss\components\_lists.scss" />
+    <Content Include="assets\scss\components\_preview.scss" />
+    <Content Include="assets\scss\components\_tables.scss" />
+    <Content Include="assets\scss\components\_todo-list.scss" />
+    <Content Include="assets\scss\landing-screens\_auth.scss" />
+    <Content Include="assets\scss\mixins\_animation.scss" />
+    <Content Include="assets\scss\mixins\_background.scss" />
+    <Content Include="assets\scss\mixins\_badges.scss" />
+    <Content Include="assets\scss\mixins\_blockqoute.scss" />
+    <Content Include="assets\scss\mixins\_breadcrumbs.scss" />
+    <Content Include="assets\scss\mixins\_buttons.scss" />
+    <Content Include="assets\scss\mixins\_cards.scss" />
+    <Content Include="assets\scss\mixins\_misc.scss" />
+    <Content Include="assets\scss\mixins\_pagination.scss" />
+    <Content Include="assets\scss\mixins\_popovers.scss" />
+    <Content Include="assets\scss\mixins\_text.scss" />
+    <Content Include="assets\scss\mixins\_tooltips.scss" />
+    <Content Include="assets\scss\style.scss" />
+    <Content Include="assets\scss\_dashboard.scss" />
+    <Content Include="assets\scss\_demo.scss" />
+    <Content Include="assets\scss\_fonts.scss" />
+    <Content Include="assets\scss\_footer.scss" />
+    <Content Include="assets\scss\_functions.scss" />
+    <Content Include="assets\scss\_layouts.scss" />
+    <Content Include="assets\scss\_misc.scss" />
+    <Content Include="assets\scss\_navbar.scss" />
+    <Content Include="assets\scss\_reset.scss" />
+    <Content Include="assets\scss\_sidebar.scss" />
+    <Content Include="assets\scss\_typography.scss" />
+    <Content Include="assets\scss\_utilities.scss" />
+    <Content Include="assets\scss\_variables.scss" />
+    <Content Include="assets\scss\_vertical-wrapper.scss" />
+    <Content Include="assets\scss\_widget-grid.scss" />
+    <Content Include="assets\vendors\js\bootstrap.min.js.map" />
+    <Content Include="assets\vendors\mdi\css\materialdesignicons.min.css.map" />
+    <Content Include="assets\vendors\mdi\fonts\materialdesignicons-webfont.eot" />
+    <Content Include="assets\vendors\mdi\fonts\materialdesignicons-webfont.ttf" />
+    <Content Include="assets\vendors\mdi\fonts\materialdesignicons-webfont.woff" />
+    <Content Include="assets\vendors\mdi\fonts\materialdesignicons-webfont.woff2" />
+    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="libman.json" />
+    <Content Include="wwwroot\main-theme\assets\demo\chart-area-demo.js" />
+    <Content Include="wwwroot\main-theme\assets\demo\chart-bar-demo.js" />
+    <Content Include="wwwroot\main-theme\assets\demo\chart-pie-demo.js" />
+    <Content Include="wwwroot\main-theme\assets\demo\datatables-demo.js" />
+    <Content Include="wwwroot\main-theme\assets\img\error-404-monochrome.svg" />
+    <Content Include="wwwroot\main-theme\css\1.png" />
+    <Content Include="wwwroot\main-theme\css\styles.css" />
+    <Content Include="wwwroot\main-theme\js\scripts.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\_AdminLayout.cshtml" />
+    <Content Include="Views\Kategori\Index.cshtml" />
+    <Content Include="Views\Kategori\KategoriEkle.cshtml" />
+    <Content Include="Views\Kategori\KategoriGuncelle.cshtml" />
+    <Content Include="Views\Urun\Index.cshtml" />
+    <Content Include="Views\Urun\YeniUrun.cshtml" />
+    <Content Include="Views\Urun\UrunGetir.cshtml" />
+    <Content Include="Views\Departman\Index.cshtml" />
+    <Content Include="Views\Departman\DepartmanEkle.cshtml" />
+    <Content Include="Views\Departman\DepartmanGuncelle.cshtml" />
+    <Content Include="Views\Departman\DepartmanDetay.cshtml" />
+    <Content Include="Views\Departman\DepartmanPersonelSatis.cshtml" />
+    <Content Include="Views\Cari\Index.cshtml" />
+    <Content Include="Views\Cari\YeniCariEkle.cshtml" />
+    <Content Include="Views\Cari\CariGuncelle.cshtml" />
+    <Content Include="Views\Cari\CariSatisDetay.cshtml" />
+    <Content Include="Views\Personel\Index.cshtml" />
+    <Content Include="Views\Personel\PersonelEkle.cshtml" />
+    <Content Include="Views\Personel\PersonelGuncelle.cshtml" />
+    <Content Include="Views\Satis\Index.cshtml" />
+    <Content Include="Views\Satis\SatisEkle.cshtml" />
+    <Content Include="Views\Satis\SatisGuncelle.cshtml" />
+    <Content Include="Views\Satis\SatisDetay.cshtml" />
+    <Content Include="Views\Yazdir\Index.cshtml" />
+    <Content Include="Views\Yazdir\UrunYazdir.cshtml" />
+    <Content Include="Views\Fatura\Index.cshtml" />
+    <Content Include="Views\Fatura\FaturaEkle.cshtml" />
+    <Content Include="Views\Fatura\FaturaGuncelle.cshtml" />
+    <Content Include="Views\Fatura\FaturaDetay.cshtml" />
+    <Content Include="Views\Fatura\FaturaKalemEkle.cshtml" />
+    <Content Include="Views\Istatistik\Index.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="lib\Image\Personel\" />
+    <Folder Include="lib\Image\Urun\" />
+    <Folder Include="Views\Stok\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.4.1.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>65144</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44379/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

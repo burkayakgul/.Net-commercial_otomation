@@ -1,0 +1,84 @@
+﻿@using MvcOnlineTicariOtomasyon.Models.Siniflar
+@model SatisHareket
+@{    ViewBag.Title = "SatisEkle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="row">
+            <div class="col-12">
+                <div class="card card-margin">
+                    <div class="card-body">
+                        <div class="page-header">
+                            <h3 class="page-title">
+                                <span class="page-title-icon bg-gradient-primary text-white mr-2">
+                                    <i class="mdi mdi-sale"></i>
+                                </span> Satış Ekle
+                            </h3>
+                            <nav aria-label="breadcrumb">
+                                <ul class="breadcrumb">
+                                    <li class="breadcrumb-item active" aria-current="page">
+                                        <span></span>Overview <i class="mdi mdi-alert-circle-outline icon-sm text-primary align-middle"></i>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <div class="form-sample">
+                            <form action="/Satis/SatisEkle" class="form-group mt-4" method="post">
+                                @Html.HiddenFor(x => x.SatisId)
+                                @Html.LabelFor(x => x.Urun)
+                                <select name="UrunId" id="urunler" class="form-control">
+                                    @foreach (var x in (ViewBag.urunler as ICollection<Urun>))
+                                    {
+                                        <option data-fiyat="@x.SatisFiyati" value="@x.UrunId">@x.UrunAd @x.Marka @x.Model</option>
+                                    }
+                                </select>
+                                @Html.LabelFor(x => x.Adet)
+                                <input type="number" name="Adet" min="1" value="1" id="adet" class="form-control" />
+                                <br />
+                                @Html.LabelFor(x => x.Fiyat)
+                                <input type="text" id="fiyat" name="Fiyat" class="form-control" readonly>
+                                <br />
+                                @Html.LabelFor(x => x.ToplamTutar)
+                                <input type="text" name="ToplamTutar" id="toplam" step="0.01" class="form-control" readonly />
+                                <br />
+                                @Html.LabelFor(x => x.Cariler)
+                                @Html.DropDownListFor(x => x.CariId, (List<SelectListItem>)ViewBag.cariler, new { @class = "form-control" })
+                                <br />
+                                @Html.LabelFor(x => x.Personel)
+                                @Html.DropDownListFor(x => x.PersonelId, (List<SelectListItem>)ViewBag.personeller, new { @class = "form-control" })
+                                <br />
+                                <button class="btn btn-success">Kaydet</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+<script>
+    $(document).ready(function () {
+        var urunler = $("#urunler");
+        var fiyat;
+        var adet = $("#adet").val();
+        urunler.change(function () {
+            $("#toplam").val("");
+            fiyat = urunler.find(':selected').data('fiyat');
+            $("#fiyat").val(fiyat);
+            $("#toplam").val(parseFloat(parseFloat(fiyat) * parseInt(adet)))
+
+
+        });
+        $("#adet").change(function () {
+            console.log('adssda');
+            adet = $("#adet").val();
+            $("#toplam").val(parseFloat(fiyat) * parseInt(adet))
+        })
+        urunler.change();
+    });
+
+</script>
+
+
