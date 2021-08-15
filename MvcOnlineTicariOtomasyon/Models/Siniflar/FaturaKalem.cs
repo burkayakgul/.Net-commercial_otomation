@@ -12,8 +12,10 @@ namespace MvcOnlineTicariOtomasyon.Models.Siniflar
         [Key]
         public int FaturaKalemId { get; set; }
 
+        //[ForeignKey("SatisHareketId")]
         public int SatisHareketId { get; set; }
-        
+        //[InverseProperty("SatisHareket")]
+        [Required]
         public virtual SatisHareket SatisHareket { get; set; }
         
         public int FaturaId { get; set; }

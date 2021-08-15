@@ -13,7 +13,6 @@ namespace MvcOnlineTicariOtomasyon.Models.Siniflar
 
         public string MarkaAd { get; set; }
         public virtual List<Model> Models { get; set; }
-
         public List<KategoriMarka> kategoriMarkas { get; set; }
 
     }

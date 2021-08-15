@@ -25,12 +25,12 @@
                         </div>
                         <div class="form-sample">
                             <form action="/Satis/SatisEkle" class="form-group mt-4" method="post">
-                                @Html.HiddenFor(x => x.SatisId)
+                                @Html.HiddenFor(x => x.SatisHareketId)
                                 @Html.LabelFor(x => x.Urun)
                                 <select name="UrunId" id="urunler" class="form-control">
                                     @foreach (var x in (ViewBag.urunler as ICollection<Urun>))
                                     {
-                                        <option data-fiyat="@x.SatisFiyati" value="@x.UrunId">@x.UrunAd @x.Marka @x.Model</option>
+                                        <option data-fiyat="@x.SatisFiyati" value="@x.UrunId">@x.UrunAd @x.UrunMarkaModel.MarkaId @x.UrunMarkaModel.MarkaId</option>
                                     }
                                 </select>
                                 @Html.LabelFor(x => x.Adet)

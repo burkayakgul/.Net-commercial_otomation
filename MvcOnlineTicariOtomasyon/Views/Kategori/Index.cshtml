@@ -1,9 +1,10 @@
-﻿@using MvcOnlineTicariOtomasyon.Models.Siniflar
-@model List<Kategori>
+﻿@using MvcOnlineTicariOtomasyon.ViewModels
+@model KategoriViewModel
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
+
 <div class="main-panel">
     <div class="content-wrapper">
         <div class="row">
@@ -11,11 +12,28 @@
                 <div class="card card-margin">
                     <div class="card-body">
                         <div class="page-header">
-                            <h3 class="page-title">
-                                <span class="page-title-icon bg-gradient-primary text-white mr-2">
-                                    <i class="mdi mdi-format-list-bulleted"></i>
-                                </span> Kategoriler
-                            </h3>
+                            <ul class="nav nav-tabs">
+                                <li class="nav-item mr-2">
+                                    <a id="kategori-buton" href="#" class="nav-link btn-outline-reddit">
+                                        <span class="page-title-icon bg-gradient-primary text-white mr-2">
+                                        </span> Kategoriler
+                                    </a>
+                                </li>
+                                <li class="nav-item mr-2">
+                                    <a id="marka-buton" href="#" class="nav-link btn-outline-reddit">
+                                        <span class="mr-2">
+                                            Markalar
+                                        </span>
+                                    </a>
+                                </li>
+                                <li class="nav-item mr-2">
+                                    <a href="#" id="ozellik-buton" class="nav-link btn-outline-reddit">
+                                        <span class="mr-2">
+                                            Özellikler
+                                        </span>
+                                    </a>
+                                </li>
+                            </ul>
                             <nav aria-label="breadcrumb">
                                 <ul class="breadcrumb">
                                     <li class="breadcrumb-item active" aria-current="page">
@@ -24,7 +42,8 @@
                                 </ul>
                             </nav>
                         </div>
-                        <div class="form-sample">
+                        <hr class="text-decoration-line-through" />
+                        <div id="kategori-form" class="form-sample">
                             <table class="table table-striped">
                                 <tr>
                                     <th width="70px;">Id</th>
@@ -32,13 +51,55 @@
                                     <th width="70px;">Sil</th>
                                     <th width="70px;">Güncelle</th>
                                 </tr>
-                                @foreach (var k in Model)
+                                @foreach (var k in Model.Kategoris)
                                 {
                                     <tr>
                                         <td>@k.KategoriId</td>
                                         <td>@k.KategoriAd</td>
                                         <td><a href="/Kategori/KategoriSil/@k.KategoriId" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a></td>
                                         <td><a href="/Kategori/KategoriGuncelle/@k.KategoriId" class="btn btn-warning"><i class="fas fa-pen"></i></a></td>
+                                    </tr>
+                                }
+                            </table>
+                            <br />
+                            <a href="/Kategori/KategoriEkle/" class="btn btn-success"><i class="fas fa-plus-circle"></i></a>
+                        </div>
+                        <div id="marka-form" class="form-sample">
+                            <table class="table table-striped">
+                                <tr>
+                                    <th width="70px;">Id</th>
+                                    <th>Kategori Ad</th>
+                                    <th width="70px;">Sil</th>
+                                    <th width="70px;">Güncelle</th>
+                                </tr>
+                                @foreach (var m in Model.Markas)
+                                {
+                                    <tr>
+                                        <td>@m.MarkaId</td>
+                                        <td>@m.MarkaAd</td>
+                                        <td><a href="/Kategori/KategoriSil/" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a></td>
+                                        <td><a href="/Kategori/KategoriGuncelle/" class="btn btn-warning"><i class="fas fa-pen"></i></a></td>
+                                    </tr>
+                                }
+                            </table>
+                            <br />
+                            <a href="/Kategori/KategoriEkle/" class="btn btn-success"><i class="fas fa-plus-circle"></i></a>
+                        </div>
+                        <div id="ozellik-form" class="form-sample">
+                            <table class="table table-striped">
+                                <tr>
+                                    <th width="70px;">Id</th>
+                                    <th>Kategori Ad</th>
+                                    <th width="70px;">Sil</th>
+                                    <th width="70px;">Güncelle</th>
+                                </tr>
+                                @foreach (var o in Model.Ozelliks)
+                                {
+                                    <tr>
+                                        <td>@o.OzellikId</td>
+                                        <td>@o.OzellikAd</td>
+                                        <td><a href="/Kategori/KategoriSil/" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a></td>
+                                        <td><a href="/Kategori/KategoriGuncelle/" class="btn btn-warning"><i class="fas fa-pen"></i></a></td>
                                     </tr>
                                 }
                             </table>

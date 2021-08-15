@@ -17,6 +17,8 @@ namespace MvcOnlineTicariOtomasyon.Models.Siniflar
 
         public int DegerId { get; set; }
         public int UrunId { get; set; }
+
+        public virtual Ozellik Ozellik { get; set; }
         public Urun Urun { get; set; }
     }
 }

@@ -9,6 +9,7 @@ using MvcOnlineTicariOtomasyon.Models.Siniflar;
 using System.Web.Script.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using MvcOnlineTicariOtomasyon.ViewModels;
 
 namespace MvcOnlineTicariOtomasyon.Controllers
 {
@@ -33,61 +34,70 @@ namespace MvcOnlineTicariOtomasyon.Controllers
                                          }).ToList();
 
             ViewBag.kate = kate;
-            return View();
+            UrunViewModel urunViewModel = new UrunViewModel();
+            return View(urunViewModel);
         }
 
         [HttpPost]
-        public ActionResult YeniUrun(dynamic urun)
+        public ActionResult YeniUrun(FormCollection collection)
         {
-            
+            string comment = collection["Renk"];
+            List<UrunOzellik> urnoz = new List<UrunOzellik>();
+
+
             Urun urn = new Urun();
-            urn.UrunAd = urun["UrunAd"];
-            urn.Aciklama = urun["Aciklama"];
-            urn.AlisFiyati = urun["AlisFiyati"];
-            urn.SatisFiyati = urun["SatisFiyati"];
-            urn.KategoriId = urun["KategoriId"];
-            urn.UrunMarkaModel.MarkaId = urun["MarkaId"];
-            urn.UrunMarkaModel.ModelId = urun["ModelId"];
-            urn.UrunMarkaModelId = context.UrunMarkaModels.Last().UrunMarkaModelId + 1;
-            urn.UrunId = context.Uruns.Last().UrunId + 1;
-            int sayac;
+            urn.UrunAd = collection["Urun.UrunAd"];
+            urn.Aciklama = collection["Urun.Aciklama"];
+            urn.AlisFiyati = Convert.ToDecimal(collection["Urun.AlisFiyati"]);
+            urn.SatisFiyati = Convert.ToDecimal(collection["Urun.SatisFiyati"]);
+            urn.Durum = true;
+            urn.KategoriId = Convert.ToInt32(collection["Urun.KategoriId"]);
+            context.UrunMarkaModels.Add(
+                new UrunMarkaModel()
+                {
+                    MarkaId = Convert.ToInt32(collection["UrunMarkaModel.MarkaId"]),
+                    ModelId = Convert.ToInt32(collection["UrunMarkaModel.ModelId"])
+                }
+            );
+            context.SaveChanges();
+            Urun urn2 = context.Uruns.Find(context.Uruns.Last().UrunId);
+            urn2.UrunMarkaModelId = context.UrunMarkaModels.Last().UrunMarkaModelId;
+            int sayac = 1;
             var ozellikdeger = new UrunOzellik();
             for (sayac = 1; sayac < context.Ozelliks.Count(); sayac++)
             {
-                if (urun.deger[sayac] != null)
+                string name = context.Ozelliks.Where(x => x.OzellikId == sayac).Select(y => y.OzellikAd).FirstOrDefault();
+                if (collection[name] != "")
                 {
-                    if (urun.deger[sayac] != 0)
-                    {
-                        ozellikdeger.UrunId = context.Uruns.Last().UrunId + 1;
-                        ozellikdeger.DegerId = urun.deger[sayac];
-                        ozellikdeger.OzellikId = sayac;
-                    }
+                    ozellikdeger.UrunId = context.Uruns.Last().UrunId;
+                    ozellikdeger.DegerId = Convert.ToInt32(collection[name]);
+                    ozellikdeger.OzellikId = sayac;
+                    urn2.UrunOzelliks.Add(ozellikdeger);
                 }
-
             }
-
-
-            if (Request.Files.Count > 0)
-            {
-                string dosyaadi = (urun.UrunId).ToString();
-                List<UrunGorsel> resimlist = new List<UrunGorsel>();
-                UrunGorsel resim = new UrunGorsel();
-                for (int u = 0; u < Request.Files.Count; u++)
-                {
-                    string uzanti = Path.GetExtension(Request.Files[$"resim-{u}"].FileName);
-                    string yol = $"~/lib/Image/Urun/{urun.UrunId}/" + u + uzanti;
-                    Directory.CreateDirectory(Server.MapPath($"~/lib/Image/Urun/{urun.UrunId}/"));
-                    Request.Files[0].SaveAs(Server.MapPath(yol));
-
-                    resim.Dizin = "/lib/Image/Urun/" + "/" + urun.UrunId + "/" + u + uzanti;
-                    resim.UrunId = urun.UrunId;
-                    resimlist.Add(resim);
-                }
-                context.UrunGorsels.AddRange(resimlist);
-            }
-            context.Uruns.Add(urun);
             context.SaveChanges();
-            HttpPostedFileBase file = Request.Files["myFile"];
+
+            //if (Request.Files.Count > 0)
+            //{
+            //    string dosyaadi = (urun.UrunId).ToString();
+            //    List<UrunGorsel> resimlist = new List<UrunGorsel>();
+            //    UrunGorsel resim = new UrunGorsel();
+            //    for (int u = 0; u < Request.Files.Count; u++)
+            //    {
+            //        string uzanti = Path.GetExtension(Request.Files[$"resim-{u}"].FileName);
+            //        string yol = $"~/lib/Image/Urun/{urun.UrunId}/" + u + uzanti;
+            //        Directory.CreateDirectory(Server.MapPath($"~/lib/Image/Urun/{urun.UrunId}/"));
+            //        Request.Files[0].SaveAs(Server.MapPath(yol));
+
+            //        resim.Dizin = "/lib/Image/Urun/" + "/" + urun.UrunId + "/" + u + uzanti;
+            //        resim.UrunId = urun.UrunId;
+            //        resimlist.Add(resim);
+            //    }
+            //    context.UrunGorsels.AddRange(resimlist);
+            //}
+            //context.Uruns.Add(urun);
+            //context.SaveChanges();
+            //HttpPostedFileBase file = Request.Files["myFile"];
             return Redirect("Index");
         }
 
@@ -102,6 +112,8 @@ namespace MvcOnlineTicariOtomasyon.Controllers
             string json = JsonConvert.SerializeObject(markalar);
             return Json(json, JsonRequestBehavior.AllowGet);
         }
+
+        
 
         public JsonResult ModelGetir(int id)
         {

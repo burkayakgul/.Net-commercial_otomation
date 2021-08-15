@@ -63,21 +63,21 @@ namespace MvcOnlineTicariOtomasyon.Controllers
         }
 
 
-        //public ActionResult FaturaDetay(int id)
-        //{
-        //    //var faturakalem = context.FaturaKalems.Where(x => x.FaturaId == id).ToList();
-        //    //var toplam = context.FaturaKalems.Where(x => x.FaturaId == id).Sum(y => y.Tutar);
-        //    //var kdvsi = ((float)toplam * 0.18);
-        //    //var geneltoplam = (double)toplam + kdvsi;
-        //    //var fatura = context.Faturalars.FirstOrDefault();
-        //    //ViewBag.fatura = fatura;
-        //    //ViewBag.toplam = toplam;
-        //    //ViewBag.kdvsi = kdvsi;
-        //    //ViewBag.geneltoplam = geneltoplam;
-        //    //ViewBag.parayazi = paraToYazi(geneltoplam);
-        //    //ViewBag.geneltoplam = geneltoplam;
-        //    //return View(faturakalem);
-        //}
+        public ActionResult FaturaDetay(int id)
+        {
+            var faturakalem = context.FaturaKalems.Where(x => x.FaturaId == id).ToList();
+            var toplam = context.FaturaKalems.Where(x => x.FaturaId == id).Sum(y => y.SatisHareket.ToplamTutar);
+            var kdvsi = ((float)toplam * 0.18);
+            var geneltoplam = (double)toplam + kdvsi;
+            var fatura = context.Faturalars.FirstOrDefault();
+            ViewBag.fatura = fatura;
+            ViewBag.toplam = toplam;
+            ViewBag.kdvsi = kdvsi;
+            ViewBag.geneltoplam = geneltoplam;
+            ViewBag.parayazi = paraToYazi(geneltoplam);
+            ViewBag.geneltoplam = geneltoplam;
+            return View(faturakalem);
+        }
 
         //[HttpGet]
         //public ActionResult FaturaKalemEkle()

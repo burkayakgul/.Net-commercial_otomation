@@ -1,5 +1,5 @@
-﻿@using MvcOnlineTicariOtomasyon.Models.Siniflar;
-@model dynamic
+﻿@using MvcOnlineTicariOtomasyon.ViewModels
+@model UrunViewModel
 @{
     ViewBag.Title = "YeniUrun";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -25,24 +25,21 @@
                             </nav>
                         </div>
                         <div class="form-sample">
-                            <form class="form-group mt-4" method="post" id="urunform" enctype="multipart/form-data">
+                            <form action="/Urun/YeniUrun" method="post" class="form-group">
                                 <label for="UrunAd">Ürünün Adı</label>
-                                <input type="text" id="UrunAd" name="UrunAd" class="form-control" />
+                                <input name="Urun.UrunAd" class="form-control" id="UrunAd" />
                                 <br />
                                 <label for="Aciklama">Açıklama</label>
-                                <input type="text" id="Aciklama" name="Aciklama" class="form-control" />
-                                <br />
-                                <label for="Aciklama">Açıklama</label>
-                                <input type="text" id="Aciklama" name="Aciklama" class="form-control" />
+                                <input name="Urun.Aciklama" class="form-control" id="Aciklama" />
                                 <br />
                                 <label for="AlisFiyati">Alış Fiyatı</label>
-                                <input type="text" id="AlisFiyati" name="AlisFiyati" class="form-control" />
+                                <input type="text" id="AlisFiyati" name="Urun.AlisFiyati" class="form-control" />
                                 <br />
                                 <label for="SatisFiyati">Satış Fiyatı</label>
-                                <input type="text" id="SatisFiyati" name="SatisFiyati" class="form-control" />
+                                <input type="text" id="SatisFiyati" name="Urun.SatisFiyati" class="form-control" />
                                 <br />
                                 <label for="kategoriselect">Kategoriler</label>
-                                <select name="KategoriId" onchange="kategorisec($(this).val());ozelliksec($(this).val())" id="kategoriselect" class="form-control">
+                                <select name="Urun.KategoriId" onchange="kategorisec($(this).val());ozelliksec($(this).val())" id="kategoriselect" class="form-control">
                                     @foreach (var x in (List<SelectListItem>)ViewBag.kate)
                                     {
                                         <option value="@x.Value">@x.Text</option>
@@ -50,15 +47,31 @@
                                 </select>
                                 <br />
                                 <label for="markaselect">Markalar</label>
-                                <select id="markaselect" name="MarkaId" onchange="markasec($(this).val())" class="form-control">
+                                <select id="markaselect" name="UrunMarkaModel.MarkaId" onchange="markasec($(this).val())" class="form-control">
+                                    @foreach(var x in Model.)
                                 </select>
                                 <br />
                                 <label for="modelselect">Modeller</label>
-                                <select id="modelselect" name="ModelId" class="form-control">
+                                <select id="modelselect" name="UrunMarkaModel.ModelId" class="form-control">
                                 </select>
                                 <br />
                                 <label for="ozellikler">Özellikler</label>
                                 <div id="ozellikler" class="form-group ozellikDiv row">
+                                    <ul>
+                                        @for (int i = 0; i < Model.Ozelliks.Length ; i++)
+                                        {
+                                        <li style="padding-bottom:15px">
+                                            <label>@Model.Ozelliks[i].OzellikAd</label>
+                                            <select name="@Model.Ozelliks[i].OzellikAd">
+                                                @for (int y=0;y < Model.Ozelliks[i].Degerlers.Count; y++)
+                                                {
+                                                <option value="@Model.Ozelliks[i].Degerlers[y].Id">@Model.Ozelliks[i].Degerlers[y].DegerAd</option>
+                                                }
+                                            </select>
+                                            <a href="#" onclick="$(this).parent().remove();">Delete</a>
+                                        </li>
+                                        }
+                                    </ul>
                                 </div>
                                 <div class="form-group resimler">
                                     <div>
@@ -72,9 +85,8 @@
                                 <label for="Durum">Durum</label>
                                 <input type="text" id="Durum" name="Durum" class="form-control" />
                                 <br />
-                                <button class="btn btn-success">Kaydet</button>
+                                <input type="submit" value="Kaydet" class="btn btn-success">
                             </form>
-                            
                         </div>
                     </div>
                 </div>
@@ -145,7 +157,7 @@
                         $("#ozellikler").append(`
                                 <div class="col-4">
                                     <label for="ozellikselect-${y[key].Value}">${y[key].Text}</label>
-                                    <select class="form-control" name="deger[${id}]" style="display:inline !important;" onfocus="degersec(${y[key].Value})" id="ozellikselect-${y[key].Value}" class="form-control">
+                                    <select class="form-control" name="UrunOzellik.OzellikId" style="display:inline !important;" onfocus="degersec(${y[key].Value})" id="ozellikselect-${y[key].Value}" class="form-control">
                                         <option class="${id}-child" value="0">Değer Seçiniz</option>
                                     </select>
                                 </div>
@@ -176,17 +188,5 @@
                 });
             }
         }
-        $("#urunform").on("submit", function (event) {
-            event.preventDefault();
-            var self = $("#urunform");
-            $.ajax({
-                url: '/Urun/YeniUrun',
-                method: "POST",
-                dataType: 'json',
-                data: self.serialize(),
-                contentType: 'application/x-www-form-urlencoded; charset=UTF-8'
-            });
-            console.log(self.serialize());
-        })
     })
 </script>

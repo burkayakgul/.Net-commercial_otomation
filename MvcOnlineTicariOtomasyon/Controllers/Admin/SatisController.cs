@@ -51,6 +51,7 @@ namespace MvcOnlineTicariOtomasyon.Controllers
         public ActionResult SatisEkle(SatisHareket satis)
         {
             satis.Tarih = DateTime.Parse(DateTime.Now.ToShortDateString());
+            satis.SatisHareketId = 1;
             context.SatisHarekets.Add(satis);
             context.SaveChanges();
             return RedirectToAction("Index");

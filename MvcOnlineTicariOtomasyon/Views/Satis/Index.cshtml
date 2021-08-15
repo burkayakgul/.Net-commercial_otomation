@@ -41,16 +41,16 @@
                                 @foreach (var x in Model)
                                 {
                                     <tr>
-                                        <td>@x.SatisId</td>
+                                        <td>@x.SatisHareketId</td>
                                         <td>@x.Urun.UrunAd</td>
-                                        <td>@x.Urun.Marka - @x.Urun.Model</td>
+                                        <td>@x.Urun.UrunMarkaModel.MarkaId - @x.Urun.UrunMarkaModel.ModelId</td>
                                         <td>@x.Adet</td>
                                         <td>@x.Fiyat</td>
                                         <td>@x.ToplamTutar</td>
                                         <td>@x.Cariler.CariAd @x.Cariler.CariSoyad</td>
                                         <td>@x.Personel.PersonelAd @x.Personel.PersonelSoyad</td>
-                                        <td><a href="/Satis/SatisGuncelle/@x.SatisId" class="btn btn-warning"><i class="fas fa-pen"></i></a></td>
-                                        <td><a href="/Satis/SatisDetay/@x.SatisId" class="btn btn-info"><i class="fas fa-info-circle"></i></a></td>
+                                        <td><a href="/Satis/SatisGuncelle/@x.SatisHareketId" class="btn btn-warning"><i class="fas fa-pen"></i></a></td>
+                                        <td><a href="/Satis/SatisDetay/@x.SatisHareketId" class="btn btn-info"><i class="fas fa-info-circle"></i></a></td>
 
                                     </tr>
                                 }

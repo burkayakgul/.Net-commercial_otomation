@@ -86,19 +86,16 @@
                     </thead>
                     <tbody>
                         @{
-                            decimal toplam = 0;
                             decimal kdv = 18/100;
                         }
                         @foreach (var x in Model)
-                           
-                        {
-                            toplam = toplam +  @x.Tutar;
-                            <tr>
-                                <td>@x.Aciklama</td>
-                                <td>@x.Miktar</td>
-                                <td>@x.BirimFiyat</td>
-                                <td class="tutar">@x.Tutar</td>
 
+                        {
+                            <tr>
+                                <td>@x.SatisHareket.Urun.Aciklama</td>
+                                <td>@x.SatisHareket.Adet</td>
+                                <td>@x.SatisHareket.Fiyat</td>
+                                <td class="tutar">@x.SatisHareket.ToplamTutar</td>
                             </tr>
                         }
                         <tr>

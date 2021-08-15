@@ -30,7 +30,8 @@ namespace MvcOnlineTicariOtomasyon.Models.Siniflar
         public virtual Cariler Cariler { get; set; }
 
         public virtual Personel Personel { get; set; }
-        [Required]
-        public FaturaKalem FaturaKalem { get; set; }
+        
+        
+        public virtual FaturaKalem FaturaKalem { get; set; }
     }
 }

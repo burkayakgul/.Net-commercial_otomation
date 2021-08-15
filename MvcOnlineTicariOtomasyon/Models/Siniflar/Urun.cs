@@ -42,6 +42,5 @@ namespace MvcOnlineTicariOtomasyon.Models.Siniflar
         public int UrunMarkaModelId { get; set; }
         [Required]
         public virtual UrunMarkaModel UrunMarkaModel { get; set; }
-        public int MarkaId { get; internal set; }
     }
 }
